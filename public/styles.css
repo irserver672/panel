@@ -1,0 +1,89 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #333;
+}
+
+.start-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.manage-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: blue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.map-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  color: #fff;
+  background-color: purple;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #218838;
+}
+
+.status-ip {
+    font-size: 1.17em; /* This size is roughly equivalent to the default <h3> font size */
+    font-weight: bold;
+    margin: 0;
+}
+
+.status-divider {
+    font-size: 1.17em; /* This size is roughly equivalent to the default <h3> font size */
+    font-weight: bold;
+    margin: 0;
+   color: #a9acbd;
+}
+
+.status-header {
+    font-size: 1.17em; /* This size is roughly equivalent to the default <h3> font size */
+    font-weight: bold;
+    margin: 0;
+    color: #28a745;
+}
+
+
+.note {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border-radius: 5px;
+}

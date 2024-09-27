@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IrServer Panel BETA</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>IrServer</h1>
+      <p>
+        <b class="status-header">Online</b>
+        <b class="status-divider"> | </b>
+        <b class="status-ip">IP: </b>
+      </p>
+      <p id="statusText" class="status-text">Status server offline</p>
+      <button class="start-button" id="startButton">Start</button>
+      <button class="manage-button">Manage</button>
+      <button class="map-button">Map</button>
+
+    </div>
+
+    <div class="note"></div>
+
+    <script>
+      document.getElementById("startButton").addEventListener("click", function () {
+        // Update the status text to show the server is starting
+        const statusText = document.getElementById("statusText");
+        statusText.textContent = "Starting server...";
+
+        // Fetch the server status from the endpoint
+        fetch("https://irserverstatusmonitorserver2357.serveo.net/status") // Replace with your endpoint URL
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.text(); // Get the response as text
+          })
+          .then((status) => {
+            // Update the status text with the received status or handle empty response
+            if (status.trim() === "") {
+              statusText.textContent = "Status server offline";
+            } else {
+              statusText.textContent = status;
+            }
+          })
+          .catch((error) => {
+            statusText.textContent = "Status server offline"; // Display message if there's an error
+          });
+
+        // Optional: Fetch the server start response
+        fetch("/start-server", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              statusText.textContent = "Server started successfully: " + data.output;
+            } else {
+              statusText.textContent = "Error: " + data.message;
+            }
+          })
+          .catch((error) => {
+            statusText.textContent = "Request failed: " + error;
+          });
+      });
+    </script>
+  </body>
+</html>
+
